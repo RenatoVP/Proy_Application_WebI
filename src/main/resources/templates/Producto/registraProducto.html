@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registrar Producto</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-secondary my-3">Registrar Producto</h1>
+		<form action="/Producto/Registra" method="POST" th:object="${producto}">
+			<div class="form-group">
+				<label for="txtId">Id: </label>
+				<input th:field="*{id}" id="txtID" min="6" max="6"  type="text" placeholder="Insertar codigo del producto" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="txtDescripcion">Descripcion: </label>
+				<input th:field="*{descripcion}" id="txtDescripcion" type="text" placeholder="Insertar descripcion del producto" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="txtPrecio">Precio: </label>
+				<input th:field="*{precio}" id="txtPrecio" type="number" step="0.10"  placeholder="Insertar precio" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="txtStock">Stock: </label>
+				<input th:field="*{stock}" id="txtStock" type="number" placeholder="Insertar stock" class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label for="cboCategoria">Categoria: </label>
+				<select th:field="*{idcategoria}" id="cboCategoria" class="form-control">
+					<option value="-1">Seleccione...</option>
+					<option th:each="c: ${lstCategoria}" th:value="${c.id}" th:text="${c.descripcion}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="cboEstado">Estado: </label>
+				<select th:field="*{idestado}" id="cboEstado" class="form-control">
+					<option value="-1">Seleccione...</option>
+					<option th:each="e: ${lstEstado}" th:value="${e.id}" th:text="${e.descripcion}"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Registrar</button>
+		</form>
+	</div>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+		integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2"
+		crossorigin="anonymous"></script>
+</body>
+</html>
