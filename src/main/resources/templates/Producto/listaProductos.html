@@ -11,7 +11,7 @@
 <body>
 	<div class="container">
 		<h1 class="text-secondary text-center">Listado de Productos</h1>
-		<a href="/Producto/RegistraForm" class="btn btn-primary m-3">Nuevo</a>
+		<a href="/Producto/Registrar" class="btn btn-primary m-3">Nuevo</a>
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -33,8 +33,8 @@
 					<td th:text="${p.categoria.descripcion}"></td>
 					<td th:text="${p.estado.descripcion}"></td>
 					<td>
-						<a th:href="/Producto/Editar?id=${p.id}" class="btn btn-success">Editar</a>
-						<a th:href="/Producto/Eliminar?id=${p.id}" class="btn btn-danger">Eliminar</a>
+						<a th:href="@{/Producto/Editar?id=} + ${p.id}" class="btn btn-success">Editar</a>
+						<a th:href="@{/Producto/Eliminar?id=} + ${p.id}" class="btn btn-danger">Eliminar</a>
 					</td>
 				</tr>
 			</tbody>

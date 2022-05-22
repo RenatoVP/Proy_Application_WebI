@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/SpringBoot")
 public class ProyectController {
 	
-	@GetMapping("/App")
+	@GetMapping("/Dashboard")
 	public String Springboot() {
-		return "springboot";
+		return "dashboard";
 	}
 }

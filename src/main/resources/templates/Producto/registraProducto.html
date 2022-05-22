@@ -11,7 +11,7 @@
 <body>
 	<div class="container">
 		<h1 class="text-secondary my-3">Registrar Producto</h1>
-		<form action="/Producto/Registra" method="POST" th:object="${producto}">
+		<form action="/Producto/Registrar" method="POST" th:object="${producto}">
 			<div class="form-group">
 				<label for="txtId">Id: </label>
 				<input th:field="*{id}" id="txtID" min="6" max="6"  type="text" placeholder="Insertar codigo del producto" class="form-control"/>
