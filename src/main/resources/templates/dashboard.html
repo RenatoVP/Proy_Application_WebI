@@ -22,12 +22,35 @@
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#"
 						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-expanded="false"> Mantenimiento </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" target="frmPrincipal">Usuarios</a> <a
+								class="dropdown-item" target="frmPrincipal">Clientes</a> <a
+								class="dropdown-item" th:href="@{Producto/Listar}"
+								target="frmPrincipal">Productos</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+						aria-expanded="false"> Consultas </a>
+						<div class="dropdown-menu"
+							aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item"
+								target="frmPrincipal">Usuarios</a> <a class="dropdown-item"
+								target="frmPrincipal">Clientes</a>
+							<a class="dropdown-item"
+								target="frmPrincipal">Productos</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
 						aria-expanded="false"> Ventas </a>
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" th:href="@{/Producto/Listar}"
+							<a class="dropdown-item"
 								target="frmPrincipal">Generar Boleta de Venta</a> <a
-								class="dropdown-item" th:href="@{Producto/Registrar}"
+								class="dropdown-item"
 								target="frmPrincipal">Generar Comprobante de Pago</a>
 						</div></li>
 				</ul>
@@ -44,8 +67,7 @@
 	</header>
 
 	<main>
-		<iframe name="frmPrincipal"
-			style="height: 598px; width: 100%;"></iframe>
+		<iframe name="frmPrincipal" style="height: 598px; width: 100%;"></iframe>
 	</main>
 
 	<script
