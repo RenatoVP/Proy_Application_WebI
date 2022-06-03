@@ -48,18 +48,17 @@ public class ProductoController {
 		return "redirect:/Producto/Listar";
 	}
 	
-	@GetMapping("/Actualizar")
-	public String actualizaProductoForm(Model model) {
-		return "";
+	@PostMapping("/Editar")
+	public String buscaProducto(@ModelAttribute Producto producto, Model model) {
+		model.addAttribute("producto", ProductoRepo.findById(producto.getId()));
+		model.addAttribute("lstCategoria", CategoriaRepo.findAll());
+		model.addAttribute("lstEstado", EstadoRepo.findAll());
+		return "Producto/registraProducto";
 	}
 	
-	@PutMapping("/Actualizar")
-	public String actualizaProducto(Model model) {
-		return "";
-	}
-	
-	@DeleteMapping("/Eliminar")
-	public String eliminaProducto(Model model) {
-		return "";
+	@PostMapping("/Elimina")
+	public String elimina(@ModelAttribute Producto producto, Model model) {
+		ProductoRepo.delete(producto);
+		return "redirect:/Producto/Listar";
 	}
 }

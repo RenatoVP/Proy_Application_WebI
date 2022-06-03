@@ -33,8 +33,16 @@
 					<td th:text="${p.categoria.descripcion}"></td>
 					<td th:text="${p.estado.descripcion}"></td>
 					<td>
-						<a th:href="@{/Producto/Editar?id=} + ${p.id}" class="btn btn-success">Editar</a>
-						<a th:href="@{/Producto/Eliminar?id=} + ${p.id}" class="btn btn-danger">Eliminar</a>
+						<form action="/Producto/Editar" method="POST">
+							<input type="hidden" name="id" th:value="${p.id}"/>
+							<button type="submit" class="btn btn-success">Editar</button>
+						</form>
+					</td>
+					<td>
+						<form action="/Producto/Elimina" method="POST">
+							<input type="hidden" name="id" th:value="${p.id}"/>
+							<button type="submit" class="btn btn-danger">Eliminar</button>
+						</form>
 					</td>
 				</tr>
 			</tbody>
