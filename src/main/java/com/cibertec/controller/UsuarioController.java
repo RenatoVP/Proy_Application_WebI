@@ -22,7 +22,7 @@ public class UsuarioController {
 	@GetMapping("/login/cargar")
 	public String cargarform(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "Login";
+		return "Usuario/Login";
 	}
 
 	@PostMapping("/login/validar")
@@ -35,13 +35,13 @@ public class UsuarioController {
 			return "Login";
 		}
 		model.addAttribute("usuario", u);
-		return "Principal";
+		return "redirect:/Dashboard";
 	}
 
 	@GetMapping("/usuario/cargar")
 	public String cargarformRegistro(Model model) {
 		model.addAttribute("usuario", new Usuario());
-		return "Registro";
+		return "Usuario/Registro";
 	}
 
 	@PostMapping("/usuario/grabar")

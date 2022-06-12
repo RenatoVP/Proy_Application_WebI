@@ -9,7 +9,7 @@
 
 <body>
 	<div class="container">
-		<h1>Acceso al sistema</h1>
+		<h1 class="text-center text-secondary">Acceso al sistema</h1>
 		<form action="/login/validar" method="post" th:object="${usuario}">
 
 			<div class="form-group">
@@ -28,7 +28,7 @@
 		<div th:if="${success} != null" class="alert alert-success" role="alert" th:text="${success}"></div>
 		<div th:if="${error} != null" class="alert alert-danger" role="alert" th:text="${error}"></div>
 		<br>
-		<p>Si no tiene cuenta, registre <a href="/usuario/cargar">aqui­</a> </p>
+		<!-- <p>Si no tiene cuenta, registre <a href="/usuario/cargar">aqui­</a> </p>-->
 	</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>

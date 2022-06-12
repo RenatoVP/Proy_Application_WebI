@@ -9,9 +9,9 @@
 
 <body>
 	<div class="container">
-		<h1>Registro de cuenta</h1>
+		<h1 class="text-center text-secondary">Registrar Usuario</h1>
 		<form action="/usuario/grabar" method="post" th:object="${usuario}">
-
+			<input type="hidden" th:field="*{id}" value="0"/>
 			<div class="form-group">
 				<label for="inputAddress">Nombre</label>
 				<input th:field="*{nombre}"  type="text" class="form-control" id="inputAddress" 
