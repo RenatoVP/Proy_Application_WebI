@@ -32,7 +32,7 @@ public class UsuarioController {
 		//System.out.println("Del Find(Busqueda): " + u);
 		if (u == null) {
 			model.addAttribute("error", "Usuario o Clave Incorrecto");
-			return "Login";
+			return "Usuario/Login";
 		}
 		model.addAttribute("usuario", u);
 		return "redirect:/Dashboard";

@@ -1,5 +1,7 @@
 package com.cibertec.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cibertec.entity.Producto;
 import com.cibertec.repository.ICategoriaRepository;
@@ -32,6 +35,25 @@ public class ProductoController {
 	public String listaProductos(Model model) {
 		model.addAttribute("lstProducto", ProductoRepo.findAll());
 		return "Producto/listaProductos";
+	}
+	
+	@GetMapping("/Consulta")
+	public String consultaProductoForm(Model model) {
+		return "Producto/consultaProductos";
+	}
+	
+	@PostMapping("/Consulta")
+	public String consultaProducto(@RequestParam String nomProducto, Model model) {
+		List<Producto> lstProductos;
+		
+		if(nomProducto.equals("")) {
+			lstProductos = ProductoRepo.findAll();
+		}else {
+			lstProductos = ProductoRepo.findAllByProductName(nomProducto);
+		}
+		
+		model.addAttribute("lstProducto", lstProductos);
+		return "Producto/consultaProductos";
 	}
 	
 	@GetMapping("/Registrar")
