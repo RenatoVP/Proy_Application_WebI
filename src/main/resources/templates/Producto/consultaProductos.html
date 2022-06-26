@@ -10,13 +10,23 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-center text-secondary">Consultar Productos por Nombre</h1>
+		<h1 class="text-center text-secondary">Consultar Productos por
+			Nombre</h1>
 		<form action="Consulta" method="POST">
 			<div class="form-group">
-				<label>Producto: </label>
-				<input type="text" class="form-control" name="nomProducto" />
-				<button type="submit" class="btn btn-primary">Consultar</button>
+				<label>Producto: </label> <input type="text" class="form-control"
+					name="nomProducto" />
 			</div>
+			<div class="form-group">
+				<label>Categoria: </label> <select class="form-control" name="idCategoria">
+					<option value="-1">Seleccione...</option>
+					<option th:each="categoria : ${lstCategoria}"
+						th:value="${categoria.id}" th:utext="${categoria.descripcion}"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Consultar</button>
+			<!--  <a href="/Producto/Reporte" class="btn btn-success">Reporte</a>--> <a
+				href="/Producto/Grafico" class="btn btn-danger">Grafico</a>
 		</form>
 		<table class="table table-hover">
 			<thead>
@@ -40,13 +50,13 @@
 					<td th:text="${p.estado.descripcion}"></td>
 					<td>
 						<form action="/Producto/Editar" method="POST">
-							<input type="hidden" name="id" th:value="${p.id}"/>
+							<input type="hidden" name="id" th:value="${p.id}" />
 							<button type="submit" class="btn btn-success">Editar</button>
 						</form>
 					</td>
 					<td>
 						<form action="/Producto/Elimina" method="POST">
-							<input type="hidden" name="id" th:value="${p.id}"/>
+							<input type="hidden" name="id" th:value="${p.id}" />
 							<button type="submit" class="btn btn-danger">Eliminar</button>
 						</form>
 					</td>
@@ -54,7 +64,7 @@
 			</tbody>
 		</table>
 	</div>
-	
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
