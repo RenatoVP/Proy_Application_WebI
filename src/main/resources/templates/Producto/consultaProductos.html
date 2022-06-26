@@ -38,6 +38,7 @@
 					<th>Categoria</th>
 					<th>Estado</th>
 					<th>Accion</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -58,6 +59,12 @@
 						<form action="/Producto/Elimina" method="POST">
 							<input type="hidden" name="id" th:value="${p.id}" />
 							<button type="submit" class="btn btn-danger">Eliminar</button>
+						</form>
+					</td>
+					<td>
+						<form action="/boleta/productoBoleta" method="POST">
+							<input type="hidden" name="id" th:value="${p.id}" />
+							<button type="submit" class="btn btn-primary">Agregar</button>
 						</form>
 					</td>
 				</tr>
