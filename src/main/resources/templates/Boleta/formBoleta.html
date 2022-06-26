@@ -14,7 +14,7 @@
 		<form action="/boleta/Registrar" method="POST" th:object="${boleta}">
 			<input type="hidden" th:field="*{id}" value="0"/>
 			<div class="form-group">
-				<label for="txtidUsuario">Usuario: </label> <select
+				<label for="txtidUsuario">Vendedor: </label> <select
 					th:field="*{idusuario}" class="form-control">
 					<option th:each="usuario : ${lstUsuario}" th:value="${usuario.id}"
 						th:utext="${usuario.nombre} + ${usuario.apellido}"></option>

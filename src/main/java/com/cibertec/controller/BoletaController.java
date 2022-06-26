@@ -49,7 +49,7 @@ public class BoletaController {
 	@GetMapping("/Registrar")
 	public String registraBoletaForm(Model model) {
 		model.addAttribute("boleta", new Boleta());
-		model.addAttribute("lstUsuario", usuarioRepo.findAll());
+		model.addAttribute("lstUsuario", usuarioRepo.findAllByIdrol(1));
 		model.addAttribute("totalAPagar", totalAPagar);
 		model.addAttribute("lstProducto", lstProductos);
 		
