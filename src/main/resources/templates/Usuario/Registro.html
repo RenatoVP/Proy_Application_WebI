@@ -41,12 +41,18 @@
 						placeholder="aÃ±o/mes/dia">
 						
 				</div>
-				
 				<div class="form-group col-md-4">
-					<label for="inputProv">Tipo</label>
-					<select id="inputProv" class="form-control" >
+					<label>Estado</label>
+					<select th:field="*{idrol}" class="form-control" >
 						<option value="-1">Seleccione...</option>
-						
+						<option th:each="r : ${lstrol}" th:value="${r.id}" th:text="${r.descripcion}"></option>
+					</select>
+				</div>
+				<div class="form-group col-md-4">
+					<label>Estado</label>
+					<select th:field="*{idestado}" class="form-control" >
+						<option value="-1">Seleccione...</option>
+						<option th:each="e : ${lstestado}" th:value="${e.id}" th:text="${e.descripcion}"></option>
 					</select>
 				</div>
 			</div>
