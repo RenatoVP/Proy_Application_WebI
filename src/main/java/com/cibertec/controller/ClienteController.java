@@ -110,7 +110,7 @@ public class ClienteController {
 		response.setContentType("application/pdf");
 		
 		try {
-			String ru = resourceLoader.getResource("classpath:Clientes.jasper").getURI().getPath();
+			String ru = resourceLoader.getResource("classpath:ClienteReport.jasper").getURI().getPath();
 			JasperPrint jasperPrint = JasperFillManager.fillReport(ru, null, datasource.getConnection());
 			OutputStream outStream = response.getOutputStream();
 			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
