@@ -47,10 +47,10 @@ public class ClienteController {
 	}
 	
 	@PostMapping("Cliente/Consulta")
-	public String consultaCliente(@RequestParam String nomCli, Model model) {
+	public String consultaCliente(@RequestParam String dniCli, Model model) {
 		List<Cliente> lstClientes;
 		
-			lstClientes = repocli.findAllBynombreCliente(nomCli);
+			lstClientes = repocli.findAllBydni(dniCli);
 		
 		model.addAttribute("lstClientes", lstClientes);
 		return "Cliente/ConsultaCliente";
@@ -88,13 +88,13 @@ public class ClienteController {
 	public String busPro(@ModelAttribute Cliente p,Model model) {
 		System.out.println(p);
 	
-		model.addAttribute("cliente",repocli.findById(p.getIdCliente()));
+		model.addAttribute("cliente",repocli.findById(p.getId()));
 	
 		return "Cliente/CrudCliente";
 		
 	}
 	
-	@PostMapping("/Cliente/Elimina")
+	@PostMapping("/Cliente/Eliminar")
 	public String elimina(@ModelAttribute Cliente cliente, Model model) {
 	repocli.delete(cliente);
 		return "redirect:/Cliente/Listar";

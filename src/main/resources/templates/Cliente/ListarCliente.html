@@ -22,36 +22,44 @@
 			<thead>
 				<tr>
 					<th scope="col">Codigo</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
+					<th scope="col">Razon Social</th>
 					<th scope="col">dni</th>
+				    <th scope="col">telefono</th>
+				     <th scope="col">Email</th>
 					<th scope="col"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="p:${lstClientes}">
-				<th scope="row" th:text="${p.idCliente}"></th>
-					<td th:text="${p.nombreCliente}"></td>
-					<td th:text="${p.apellidoCliente}"></td>
-					<td th:text="${p.dniCliente}"></td>
+				<th scope="row" th:text="${p.id}"></th>
+					<td th:text="${p.razon_social}"></td>
+					<td th:text="${p.dni}"></td>
+					<td th:text="${p.telefono}"></td>
+					<td th:text="${p.email}"></td>
 					
+					
+						
 					<td>
 					
 					<form action="/Cliente/Editar"  method="post">
-					<input type="hidden" name="idCliente" th:value="${p.idCliente}">
+					<input type="hidden" name="id" th:value="${p.id}">
 					<button type="submit" class="btn btn-info">Editar</button>
 					
 					 
-					 <form action="/Cliente/Elimina" method="POST">
-							<input type="hidden" name="idCliente" th:value="${p.idCliente}"/>
-							<button type="submit" class="btn btn-danger">Eliminar</button>
-						</form>
+					
 					</form>
 					
 					
 					
 					</td>
+					<td>
+					 <form action="/Cliente/Eliminar" method="post">
+							<input type="hidden" name="id" th:value="${p.id}"/>
+							<button type="submit" class="btn btn-danger">Eliminar</button>
+						</form>
 					
+					
+					</td>
 				
 				</tr>
 				

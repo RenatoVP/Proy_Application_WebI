@@ -13,14 +13,16 @@ import lombok.Data;
 public class Cliente {
 	
 	@Id
-	private int idCliente; 
+	private int id; 
 		
 		
-		private String nombreCliente;
+		private String  razon_social;
 		
 		
-		private String apellidoCliente;
+		private String dni;
 		
 		
-		private String dniCliente;
+		private String telefono;
+		
+		private String email ;
 }

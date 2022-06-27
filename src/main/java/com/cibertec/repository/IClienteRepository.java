@@ -11,8 +11,8 @@ import com.cibertec.entity.Cliente;
 
 public interface IClienteRepository extends JpaRepository<Cliente, Integer> {
 	
-	@Query("select c from Cliente c where c.nombreCliente like %?1%")
-	public List<Cliente> findAllBynombreCliente(String nombreCliente);
+	@Query("select c from Cliente c where c.dni like %?1%")
+	public List<Cliente> findAllBydni(String dni);
 	
 
 }
