@@ -26,7 +26,7 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" th:href="@{usuario/lista}" target="frmPrincipal">Usuarios</a> <a
-								class="dropdown-item" target="frmPrincipal">Clientes</a> <a
+								class="dropdown-item" th:href="@{Cliente/Listar}" target="frmPrincipal">Clientes</a> <a
 								class="dropdown-item" th:href="@{Producto/Listar}"
 								target="frmPrincipal">Productos</a>
 						</div></li>
@@ -37,7 +37,7 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" th:href="@{usuario/consulta}" target="frmPrincipal">Usuarios</a> <a
-								class="dropdown-item" target="frmPrincipal">Clientes</a> <a
+								class="dropdown-item" th:href="@{Cliente/Consulta}" target="frmPrincipal">Clientes</a> <a
 								class="dropdown-item" th:href="@{Producto/Consulta}" target="frmPrincipal">Productos</a>
 						</div></li>
 					<li class="nav-item dropdown"><a
@@ -47,7 +47,7 @@
 						<div class="dropdown-menu"
 							aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" th:href="@{usuario/reporte}" target="frmPrincipal">Usuarios</a> <a
-								class="dropdown-item" target="frmPrincipal">Clientes</a> <a
+								class="dropdown-item" th:href="@{Cliente/reporte}" target="frmPrincipal">Clientes</a> <a
 								class="dropdown-item" th:href="@{Producto/Grafico}" target="frmPrincipal">Productos</a><a
 								class="dropdown-item" target="frmPrincipal">Ventas</a>
 						</div></li>
