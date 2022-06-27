@@ -1,10 +1,15 @@
 package com.cibertec.controller;
 
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +27,10 @@ import com.cibertec.repository.IDetalleBoletaRepository;
 import com.cibertec.repository.IProductoRepository;
 import com.cibertec.repository.IUsuarioRepository;
 
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+
 @Controller
 @RequestMapping("/boleta")
 public class BoletaController {
@@ -37,6 +46,11 @@ public class BoletaController {
 	
 	@Autowired
 	private IDetalleBoletaRepository dbRepo;
+	@Autowired
+	private DataSource datasource;
+	
+	@Autowired
+	private ResourceLoader resourceLoader;
 	
 	//Utilidades
 	private ArrayList<BoletaProducto> lstProductos = new ArrayList<BoletaProducto>();
@@ -143,5 +157,24 @@ public class BoletaController {
 		lstProductos.remove(index -1);
 		
 		return "redirect:/boleta/Registrar";
+	}
+
+
+	@GetMapping("/ventasReporte")
+	public void grafico(HttpServletResponse response) {
+		response.setHeader("Content-Disposition", "attachment; filename=\"ventas.pdf\";");
+		response.setHeader("Cache-Control", "no-cache");
+		response.setHeader("Pragma", "no-cache");
+		response.setDateHeader("Expires", 0);
+		response.setContentType("application/pdf");
+		
+		try {
+			String ru = resourceLoader.getResource("classpath:ventas.jasper").getURI().getPath();
+			JasperPrint jasperPrint = JasperFillManager.fillReport(ru, null, datasource.getConnection());
+			OutputStream outStream = response.getOutputStream();
+			JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
