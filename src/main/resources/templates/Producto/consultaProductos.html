@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Listado de Productos</title>
+<title>Consultar Producto</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
 	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
@@ -10,9 +10,25 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="text-secondary text-center">Listado de Productos</h1>
-		<a href="/Producto/Registrar" class="btn btn-primary m-3">Nuevo</a>
-		<table class="table table-striped">
+		<h1 class="text-center text-secondary">Consultar Productos por
+			Nombre</h1>
+		<form action="Consulta" method="POST">
+			<div class="form-group">
+				<label>Producto: </label> <input type="text" class="form-control"
+					name="nomProducto" />
+			</div>
+			<div class="form-group">
+				<label>Categoria: </label> <select class="form-control" name="idCategoria">
+					<option value="-1">Seleccione...</option>
+					<option th:each="categoria : ${lstCategoria}"
+						th:value="${categoria.id}" th:utext="${categoria.descripcion}"></option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Consultar</button>
+			<!--  <a href="/Producto/Reporte" class="btn btn-success">Reporte</a>--> <a
+				href="/Producto/Grafico" class="btn btn-danger">Grafico</a>
+		</form>
+		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Codigo</th>
@@ -22,6 +38,7 @@
 					<th>Categoria</th>
 					<th>Estado</th>
 					<th>Accion</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -34,20 +51,27 @@
 					<td th:text="${p.estado.descripcion}"></td>
 					<td>
 						<form action="/Producto/Editar" method="POST">
-							<input type="hidden" name="id" th:value="${p.id}"/>
+							<input type="hidden" name="id" th:value="${p.id}" />
 							<button type="submit" class="btn btn-success">Editar</button>
 						</form>
 					</td>
 					<td>
 						<form action="/Producto/Elimina" method="POST">
-							<input type="hidden" name="id" th:value="${p.id}"/>
+							<input type="hidden" name="id" th:value="${p.id}" />
 							<button type="submit" class="btn btn-danger">Eliminar</button>
+						</form>
+					</td>
+					<td>
+						<form action="/boleta/productoBoleta" method="POST">
+							<input type="hidden" name="id" th:value="${p.id}" />
+							<button type="submit" class="btn btn-primary">Agregar</button>
 						</form>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
